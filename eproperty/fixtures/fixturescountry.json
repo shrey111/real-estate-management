@@ -1,0 +1,10 @@
+[
+  {
+    "model": "eproperty.Country",
+    "pk": 1,
+    "fields": {
+      "countryID": 1,
+      "countryName": "Canada"
+    }
+  }
+]

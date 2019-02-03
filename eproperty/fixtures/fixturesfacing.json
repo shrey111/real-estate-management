@@ -1,0 +1,42 @@
+[
+  {
+    "model": "eproperty.PropertyFacing",
+    "pk": 1,
+    "fields": {
+      "PropertyFacingId": 1,
+      "PropertyFacingName": "North"
+    }
+  },
+  {
+    "model": "eproperty.PropertyFacing",
+    "pk": 2,
+    "fields": {
+      "PropertyFacingId": 2,
+      "PropertyFacingName": "South"
+    }
+  },
+  {
+    "model": "eproperty.PropertyFacing",
+    "pk": 3,
+    "fields": {
+      "PropertyFacingId": 3,
+      "PropertyFacingName": "East"
+    }
+  },
+  {
+    "model": "eproperty.PropertyFacing",
+    "pk": 4,
+    "fields": {
+      "PropertyFacingId": 4,
+      "PropertyFacingName": "West"
+    }
+  },
+  {
+    "model": "eproperty.PropertyFacing",
+    "pk": 5,
+    "fields": {
+      "PropertyFacingId": 5,
+      "PropertyFacingName": "Other"
+    }
+  }
+]

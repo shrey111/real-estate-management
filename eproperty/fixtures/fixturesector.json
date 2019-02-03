@@ -1,0 +1,50 @@
+[
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 1,
+    "fields": {
+      "PropertySectorId": 1,
+      "SectorName": "Private"
+    }
+  },
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 2,
+    "fields": {
+      "PropertySectorId": 2,
+      "SectorName": "Residential"
+    }
+  },
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 3,
+    "fields": {
+      "PropertySectorId": 3,
+      "SectorName": "Commercial"
+    }
+  },
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 4,
+    "fields": {
+      "PropertySectorId": 4,
+      "SectorName": "Government"
+    }
+  },
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 5,
+    "fields": {
+      "PropertySectorId": 5,
+      "SectorName": "Rural"
+    }
+  },
+  {
+    "model": "eproperty.PropertySector",
+    "pk": 6,
+    "fields": {
+      "PropertySectorId": 6,
+      "SectorName": "Other"
+    }
+  }
+]

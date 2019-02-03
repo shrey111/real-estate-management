@@ -1,0 +1,38 @@
+[
+  {
+    "model": "eproperty.Province",
+    "pk": 1,
+    "fields": {
+      "provinceID": 1,
+      "provinceName": "Ontario",
+      "country_id": 1
+    }
+  },
+  {
+    "model": "eproperty.Province",
+    "pk": 2,
+    "fields": {
+      "provinceID": 2,
+      "provinceName": "Quebec",
+      "country_id": 1
+    }
+  },
+  {
+    "model": "eproperty.Province",
+    "pk": 3,
+    "fields": {
+      "provinceID": 3,
+      "provinceName": "New Brunswick",
+      "country_id": 1
+    }
+  },
+  {
+    "model": "eproperty.Province",
+    "pk": 4,
+    "fields": {
+      "provinceID": 4,
+      "provinceName": "Alberta",
+      "country_id": 1
+    }
+  }
+]

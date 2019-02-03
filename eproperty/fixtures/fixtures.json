@@ -1,0 +1,82 @@
+[
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 1,
+    "fields": {
+      "PropertyCategoryId": 1,
+      "CategoryName": "Single House"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 2,
+    "fields": {
+      "PropertyCategoryId": 2,
+      "CategoryName": "Attached House"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 3,
+    "fields": {
+      "PropertyCategoryId": 3,
+      "CategoryName": "Town House"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 4,
+    "fields": {
+      "PropertyCategoryId": 4,
+      "CategoryName": "Appartment"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 5,
+    "fields": {
+      "PropertyCategoryId": 5,
+      "CategoryName": "Store"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 6,
+    "fields": {
+      "PropertyCategoryId": 6,
+      "CategoryName": "Farm"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 7,
+    "fields": {
+      "PropertyCategoryId": 7,
+      "CategoryName": "Factory"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 8,
+    "fields": {
+      "PropertyCategoryId": 8,
+      "CategoryName": "Mall"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 9,
+    "fields": {
+      "PropertyCategoryId": 9,
+      "CategoryName": "Building"
+    }
+  },
+  {
+    "model": "eproperty.PropertyCategory",
+    "pk": 10,
+    "fields": {
+      "PropertyCategoryId": 10,
+      "CategoryName": "Other"
+    }
+  }
+]

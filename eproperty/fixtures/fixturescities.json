@@ -1,0 +1,47 @@
+[
+  {
+    "model": "eproperty.City",
+    "pk": 1,
+    "fields": {
+      "cityID": 1,
+      "cityName": "Windsor",
+      "province_id": 1
+    }
+  },
+  {
+    "model": "eproperty.City",
+    "pk": 2,
+    "fields": {
+      "cityID": 2,
+      "cityName": "Toronto",
+      "province_id": 1
+    }
+  },
+  {
+    "model": "eproperty.City",
+    "pk": 3,
+    "fields": {
+      "cityID": 3,
+      "cityName": "Montreal",
+      "province_id": 2
+    }
+  },
+  {
+    "model": "eproperty.City",
+    "pk": 4,
+    "fields": {
+      "cityID": 4,
+      "cityName": "Calgary",
+      "province_id": 4
+    }
+  },
+  {
+    "model": "eproperty.City",
+    "pk": 5,
+    "fields": {
+      "cityID": 5,
+      "cityName": "SaintJohn",
+      "province_id": 3
+    }
+  }
+]

@@ -1,0 +1,67 @@
+from django.conf.urls import url
+from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+from eproperty import views
+
+from django.contrib.auth import views as auth_views
+
+from django.contrib.auth.decorators import login_required
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('thankyou/', views.thankyou, name='thankyou'),
+    path('search/', views.search, name='search'),
+    path('advertise/', views.advertise, name='advertise'),
+    path('login/', views.login, name='login'),
+    path('signup/', views.register, name='signup'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('password/', views.change_password, name='change_password'),
+    path('createproperty/', views.create_property, name='createproperty'),
+    path('propertydetail/<int:id>', views.property_detail, name='property_detail'),
+    path('deleteproperty/<int:pk>', views.PropertyDelete.as_view(), name='delete_property'),
+    path('updateproperty/<int:id>', views.update_property, name='update_property'),
+    path('search/', views.search, name='search'),
+    path('search/advanced', views.advanced_search, name='advanced_search'),
+    path('system/', views.loginsystem, name="login_system"),
+    path('system/login/', views.loginsystem, name="login_system"),
+    path('system/signup/', views.Signup, name='signup_system'),
+    path('system/dashboard/', login_required(views.dashboard), name='dashboard'),
+    path('system/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('system/users/', login_required(views.user_list), name='user_list'),
+    path('system/createUser/', login_required(views.UserCreateView.as_view()), name='create_user'),
+    path('system/updateUser/<int:pk>', login_required(views.UserUpdateView.as_view()), name='update_user'),
+    path('system/deleteUser/<int:pk>', login_required(views.UserDeleteView.as_view()), name='delete_user'),
+    path('system/password/', login_required(views.change_password_system), name='change_password_system'),
+    path('system/roles/', login_required(views.role_list), name='role_list'),
+    path('system/createRole/', login_required(views.RoleCreateView.as_view()), name='create_role'),
+    path('system/updateRole/<int:pk>', login_required(views.RoleUpdateView.as_view()), name='update_role'),
+    path('system/deleteRole/<int:pk>', login_required(views.RoleDeleteView.as_view()), name='delete_role'),
+    path('system/permissions/', login_required(views.permission_list), name='permission_list'),
+    path('system/createPermission/', login_required(views.PermissionCreateView.as_view()), name='create_permission'),
+    path('system/updatePermission/<int:pk>', login_required(views.PermissionUpdateView.as_view()), name='update_permission'),
+    path('system/deletePermission/<int:pk>', login_required(views.PermissionDeleteView.as_view()), name='delete_permission'),
+    path('system/uploadFeatures/', login_required(views.permission_upload), name='upload_features'),
+    path('system/assign-roles/<int:pk>', login_required(views.assign_roles), name='assign_roles'),
+    path('system/assign-property/<int:pk>', login_required(views.assign_property), name='assign_property'),
+    path('system/assign-permission/<int:pk>', login_required(views.assign_permission), name='assign_permission'),
+    path('system/update-status/<int:pk>', login_required(views.update_status), name="update_status"),
+    path('system/properties/', login_required(views.properties), name="property_list"),
+    path('system/property-system-create/', login_required(views.PropertyCreateView.as_view()), name='property_system_create'),
+    path('system/property-system-update/<int:pk>', login_required(views.PropertyUpdateView.as_view()), name='update_system_property'),
+    path('system/property-system-delete/<int:pk>', login_required(views.PropertyDeleteView.as_view()), name='delete_system_property'),
+    path('system/property-image/<int:pk>', login_required(views.property_image), name='property_image'),
+    path('system/country-list/', login_required(views.country_list), name='country_list'),
+    path('system/country-create/', login_required(views.CreateCountryView.as_view()), name='create_country'),
+    path('system/country-update/<int:pk>', login_required(views.UpdateCountryView.as_view()), name='update_country'),
+    path('system/country-delete/<int:pk>', login_required(views.DeleteCountryView.as_view()), name='delete_country'),
+    path('system/province-list/', login_required(views.province_list), name='province_list'),
+    path('system/province-create/', login_required(views.CreateProvinceView.as_view()), name='create_province'),
+    path('system/province-update/<int:pk>', login_required(views.UpdateProvinceView.as_view()), name='update_province'),
+    path('system/province-delete/<int:pk>', login_required(views.DeleteProvinceView.as_view()), name='delete_province'),
+    path('system/city-list/', login_required(views.city_list), name='city_list'),
+    path('system/city-create/', login_required(views.CreateCityView.as_view()), name='create_city'),
+    path('system/city-update/<int:pk>', login_required(views.UpdateCityView.as_view()), name='update_city'),
+    path('system/city-delete/<int:pk>', login_required(views.DeleteCityView.as_view()), name='delete_city'),
+
+  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
