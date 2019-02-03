@@ -1,0 +1,40 @@
+{% extends "adminlte/base.html" %}
+
+{% load bootstrap3 %}
+
+{% block body_class %}login-page{% endblock %}
+
+
+
+{% block body %}
+
+
+    <div class="login-box">
+        {% block logo %}
+        <div class="login-logo">
+            {# Mirrors block names used in _main_header.html #}
+            <a href="{% block logo_href %}/{% endblock %}">{% block logo_text %}<b>Real Estate System</b>{% endblock %}</a>
+        </div>
+        {% endblock %}
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+
+            {% block login_form %}
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% bootstrap_form form %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            {% endblock login_form %}
+
+        </div>
+    </div>
+
+{% endblock %}
+

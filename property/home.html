@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<title>Real Estate System</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/font-awesome.min.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/magnific-popup.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/owl.carousel.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/tooplate-style.css" %}">
+</head>
+
+<body>
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content"></div>
+                </div>
+            </div>
+            <div class="navbar custom-navbar navbar-fixed-top" role="navigation">
+                 <div class="container">
+
+                      <!-- NAVBAR HEADER -->
+                      <div class="navbar-header">
+                           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon icon-bar"></span>
+                                <span class="icon icon-bar"></span>
+                                <span class="icon icon-bar"></span>
+                           </button>
+                           <!-- lOGO -->
+                           <a href="{% url 'home' %}" class="logo"><img src="{% static "images/logo.png" %}" alt="Logo"/></a>
+                      </div>
+
+                      <!-- MENU LINKS -->
+
+                     {% if request.user.is_authenticated %}
+                      <div class="collapse navbar-collapse">
+                          <div class="collapse navbar-collapse">
+                               <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
+                                    <li><a href="{% url 'about' %}" class="smoothScroll">About Us</a></li>
+                                    <li><a href="{% url 'logout' %}" class="smoothScroll">Log out</a></li>
+                               </ul>
+                          </div>
+
+                      </div>
+                     {% else %}
+                         <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
+                                <li><a href="{% url 'about' %}" class="smoothScroll">About Us</a></li>
+                                <li><a class="login-btn" href="#">Sign In</a></li>
+                                <li><a class="signup-btn" href="#">Sign Up</a></li>
+                            </ul>
+                         </div>
+                     {% endif %}
+
+                 </div>
+            </div>
+
+            <section id="home" class="parallax-section">
+             <div class="overlay"></div>
+             <div class="container">
+                  <div class="row">
+
+                       <div class="col-md-8 col-sm-12">
+                            <div class="home-text">
+                                 <h1>Welcome to Real Estate System</h1>
+                                 <p>Advertise or Sell Your Property With Real Estate System</p>
+                                 <ul class="section-btn">
+                                      <a href="{% url 'about' %}" class="btn btn-success">Discover More</a>
+                                 </ul>
+                            </div>
+                       </div>
+
+                  </div>
+             </div>
+
+        </section>
+
+            <section id="team" class="parallax-section">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-offset-2 col-md-8 col-sm-12">
+                    <!-- SECTION TITLE -->
+                    <div class="section-title">
+                         <h1>RECENT PROPERTIES FOR SELL</h1>
+                    </div>
+               </div>
+
+               <div class="clearfix"></div>
+
+               <div id="owl-team" class="owl-carousel">
+                   {% for content in object %}
+                       <div class="col-md-4 col-sm-4 item">
+                         <div class="team-item">
+                             {% if content.ImageName != None %}
+                              <img src="{{content.ImageName.url}}" class="img-responsive" alt="" style="height: 12em">
+                             {% endif %}
+
+                         </div>
+                         <p>{{content.propertyID.propertyTitle}}</p>
+                        </div>
+
+                   {% endfor %}
+               </div>
+
+          </div>
+     </div>
+
+</section>
+            <section id="contact" class="parallax-section">
+                 <div class="container">
+                      <div class="row">
+
+                           <div class="col-md-offset-3 col-md-6 col-sm-12">
+                                <div class="section-title">
+                                     <h1>Talk to us!</h1>
+                                </div>
+                           </div>
+
+                           <div class="clearfix"></div>
+
+                           <div class="col-md-offset-2 col-md-8 col-sm-12">
+                                <!-- CONTACT FORM HERE -->
+                                <form id="contact-form" action="#" method="get" role="form">
+
+                                     <!-- IF MAIL SENT SUCCESSFULLY -->
+                                     <h6 class="text-success">Your message has been sent successfully. </h6>
+
+                                     <!-- IF MAIL SENDING UNSUCCESSFULL -->
+                                     <h6 class="text-danger">E-mail must be valid and message must be longer than 1 character.</h6>
+
+                                     <div class="col-md-6 col-sm-6">
+                                          <input type="text" class="form-control" id="cf-name" name="cf-name" placeholder="Name">
+                                     </div>
+
+                                     <div class="col-md-6 col-sm-6">
+                                          <input type="email" class="form-control" id="cf-email" name="cf-email" placeholder="Email Address">
+                                     </div>
+
+                                     <div class="col-md-12 col-sm-12">
+                                          <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+                                          <textarea class="form-control" rows="5" id="cf-message" name="cf-message" placeholder="Message"></textarea>
+                                     </div>
+
+                                     <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+                                               <button type="submit" class="btn btn-success form-control" name="submit">Send Message</button>
+                                     </div>
+                                </form>
+                           </div>
+
+                      </div>
+                 </div>
+            </section>
+
+<footer>
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12 col-sm-12">
+                    <div class="copyright-text">
+                         <p>Copyright © 2018 RealEstateSystem| Design: HTML</p>
+                    </div>
+               </div>
+          </div>
+     </div>
+</footer>
+
+	</body>
+
+
+
+
+<!-- SCRIPTS -->
+<script src="{% static "assets/js/jquery.js" %}"></script>
+<script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/owl.carousel.min.js" %}"></script>
+<script src="{% static "assets/js/jquery.magnific-popup.min.js" %}"></script>
+<script src="{% static "assets/js/magnific-popup-options.js" %}"></script>
+<script src="{% static "assets/js/jquery.parallax.js" %}"></script>
+<script src="{% static "assets/js/custom.js" %}"></script>
+<script src="{% static 'assets/js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+<script type="text/javascript">
+
+     $(document).ready(function(){
+          $(".owl-carousel").owlCarousel({
+            autoPlay: 6000,
+            items : 4,
+            itemsDesktop : [1199,3],
+            itemsDesktopSmall : [979,3],
+            itemsTablet: [768,2],
+            itemsTabletSmall: false,
+            itemsMobile : [479,1],
+            Speedfast: 200,
+          });
+     });
+
+  $(function () {
+    // Log in button
+    $(".login-btn").modalForm({formURL: "{% url 'login' %}"});
+
+    $(".signup-btn").modalForm({formURL: "{% url 'signup' %}"});
+
+  });
+</script>
+
+</html>

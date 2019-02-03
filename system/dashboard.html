@@ -1,0 +1,43 @@
+{% extends 'adminlte/base.html' %}
+
+{% block body %}
+
+    {% block nav_header %}
+                {% include 'system/include/header.html' %}
+    {% endblock %}
+ <section id="page">
+    {% block nav_sidebar %}
+                {% include 'system/include/sidebar.html' %}
+    {% endblock %}
+
+{% block content_wrapper %}
+  <div class="page-container dashboard-page-container">
+          <div class="page-content">
+            <div class="content-wrapper">
+                <!-- Default box -->
+                   <div class="box box-success">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Dashboard</h3>
+
+                          <div class="box-tools pull-right">
+
+                          </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            Welcome to the real estate system!
+                        </div>
+                </div>
+
+            </div>
+          </div>
+
+  </div>
+    <!-- /.box -->
+{% endblock content_wrapper %}
+
+    {% block nav_footer %}
+        {% include 'system/include/footer.html' %}
+    {% endblock %}
+ </section>
+{% endblock body %}

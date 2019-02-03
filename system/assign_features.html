@@ -1,0 +1,66 @@
+{% extends 'adminlte/base.html' %}
+{% load bootstrap3 %}
+
+{% block body %}
+
+    {% block nav_header %}
+                {% include 'system/include/header.html' %}
+    {% endblock %}
+ <section id="page">
+    {% block nav_sidebar %}
+                {% include 'system/include/sidebar.html' %}
+    {% endblock %}
+
+{% block content_wrapper %}
+  <div class="page-container dashboard-page-container">
+          <div class="page-content">
+            <div class="content-wrapper">
+                <!-- Default box -->
+                   <div class="box box-success">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Assign Features to {{ name }}</h3>
+
+                          <div class="box-tools pull-right">
+
+                          </div>
+                        </div>
+                       <form method="POST" id="user_form" class="form">
+                           {% csrf_token %}
+
+                            {% if role_form.errors and not role_form.non_field_errors %}
+                                {% for error in role_form.non_field_errors %}
+                                    <p class="alert alert-danger">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if role_form.non_field_errors %}
+                                {% for error in role_form.non_field_errors %}
+                                    <p class="alert alert-danger">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-lg-6">
+                                {% bootstrap_form role_form %}
+                                  <button type="submit" class="submit-btn btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                       </form>
+                </div>
+
+            </div>
+          </div>
+
+  </div>
+    <!-- /.box -->
+{% endblock content_wrapper %}
+
+    {% block nav_footer %}
+        {% include 'system/include/footer.html' %}
+    {% endblock %}
+ </section>
+{% endblock body %}

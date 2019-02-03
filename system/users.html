@@ -1,0 +1,117 @@
+{% extends 'adminlte/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block body %}
+
+    {% block nav_header %}
+                {% include 'system/include/header.html' %}
+    {% endblock %}
+ <section id="page">
+    {% block nav_sidebar %}
+                {% include 'system/include/sidebar.html' %}
+    {% endblock %}
+
+{% block content_wrapper %}
+  <div class="page-container dashboard-page-container">
+          <div class="page-content">
+            <div class="content-wrapper">
+                <!-- Default box -->
+                   <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>Manage Users</b></h3>
+                      <div class="heading-elements">
+                            <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+                                <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+
+                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Create book button -->
+                            <button class="create-user btn btn-primary pull-right" type="button" name="button">Create User</button>
+                      </div>
+                    </div>
+
+                   <table class="table table-bordered table-hovered "cellspacing='0'>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                            <th></th>
+                        </tr>
+                        {% for user in userList %}
+                            <tr>
+                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.last_name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td><button type="button" class="update-user btn btn-sm btn-primary" data-id="{% url 'update_user' user.userID %}">
+                                    <span class="fa fa-pencil"></span>
+                                  </button>
+                                    {% if request.user.pk != user.pk %}
+                                        <button type="button" class="delete-user btn btn-sm btn-danger" data-id="{% url 'delete_user' user.userID %}">
+                                            <span class="fa fa-trash"></span>
+                                        </button>
+                                    {% endif %}
+
+                                    {% if user.is_active %}
+                                        <button type="button" class="btn btn-sm btn-primary">
+                                            <span class="fa fa-check">Active</span>
+                                         </button>
+                                    {% else %}
+                                         <button type="button" class="update-status btn btn-sm btn-danger" data-id="{% url 'update_status' user.userID %}">
+                                            <span class="fa fa-remove">Inactive</span>
+                                         </button>
+                                    {% endif %}
+                                </td>
+                                <td><a class="btn btn-primary" id="btnOpen_{{ user.userID }}" href="{% url "assign_roles" user.userID %}">Assign Roles</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                  </div>
+
+            </div>
+          </div>
+
+  </div>
+    <!-- /.box -->
+{% endblock content_wrapper %}
+
+    {% block nav_footer %}
+        {% include 'system/include/footer.html' %}
+    {% endblock %}
+ </section>
+
+{% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/jquery.bootstrap.modal.forms.js' %}"></script>
+    <script src="{% static "admin-lte/dist/js/app.min.js" %}"></script>
+    <script type="text/javascript">
+    $(function () {
+    // Sign up button
+        $(".create-user").modalForm({formURL: "{% url 'create_user' %}"});
+
+        $(".update-user").each(function () {
+          $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+         $(".delete-user").each(function () {
+          $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+          $(".update-status").each(function () {
+          $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+    });
+
+
+    </script>
+{% endblock %}
+{% endblock body %}

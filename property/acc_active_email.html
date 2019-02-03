@@ -1,0 +1,14 @@
+{% autoescape off %}
+Hi admin,
+
+New registration for our system!
+
+User Detail:
+Username: {{ user.username }}
+First Name: {{ user.first_name }}
+Last Name: {{ user.last_name }}
+Email: {{ user.email }}
+
+Please click on the link to activate new user registration,
+http://{{ domain }}{% url 'login_system' %}
+{% endautoescape %}

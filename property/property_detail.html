@@ -1,0 +1,97 @@
+{% load static %}
+{% load bootstrap3 %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+{% include "includes/header.html" %}
+<link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/prettyPhoto.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/animate.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/flaticon.css" %}">
+
+<body class="subpageblock">
+
+		<!-- Menu -->
+{% include "includes/menu.html" %}
+		<!-- Three -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal" style="margin-top: 100px">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content"></div>
+            </div>
+        </div>
+       <div class="panel panel-default" style="margin-top: 100px">
+           <div class="panel-heading">Property Detail</div>
+          <div class="panel-body">
+                <div class="row">
+			            <div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="service-widget">
+					<div class="property-main">
+						<div class="property-wrap">
+							<figure class="post-media wow fadeIn">
+								<a href="{{ object.ImageName.url }}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+								<img src="{{ object.ImageName.url }}" alt="" class="img-responsive">
+								<div class="label-inner">
+									<span class="label-status label">Popular</span>
+								</div>
+								<div class="price">
+									<span class="item-sub-price">${{ object.propertyID.propertySellingPrice }}</span>
+								</div>
+							</figure>
+							<div class="item-body">
+								<h3>{{ object.propertyID.propertyTitle }}</h3>
+								<div class="info">
+									<p><span>Bedroom: {{ object.propertyID.propertyNumberOfRooms }}</span> <span>Bathroom: {{ object.propertyID.propertyNoofBathrooms }}</span> <span>Land Size: <span class="estate-x-size">{{ object.propertyID.propertyTotalArea }}</span> <span class="estate-x-unit">squares</span></span></p>
+									<p>{{ object.propertyID.propertyCategory.CategoryName }}</p>
+								</div>
+								<div class="adderess">
+									<i class="fa fa-map-pin" aria-hidden="true"></i>
+                                    {{ object.propertyID.propertyStreet }} {{ object.propertyID.propertyCity }} {{ object.propertyID.propertyProvince }} {{ object.propertyID.propertyCountry }} {{ object.propertyID.propertyPostalCode }}
+								</div>
+							</div>
+						</div>
+						<div class="item-foot">
+							<div class="pull-left">
+								<span class="prop-user-agent">
+									<i class="fa fa-user" aria-hidden="true"></i>
+									{{ request.user.first_name }} {{ request.user.last_name }}
+								</span>
+							</div>
+							<div class="pull-right">
+								<span class="prop-date">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+									{{ object.propertyID.propertyRegistrationDate }}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div><!-- end service -->
+			</div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            {% if user_obj == request.user %}
+                            <button class="btn-default" onclick="location.href='{% url 'update_property' object.propertyID.pk  %}'">Update</button><br/><br/>
+                            <button type="button" class="delete-book btn-default" data-id="{% url 'delete_property' object.propertyID.pk %}">
+                                <span class="fa fa-trash"></span> Delete
+                            </button>
+                            {% endif %}
+                        </div>
+		        </div>
+          </div>
+        </div>
+
+{% include "includes/footer.html" %}
+
+<script src="{% static "assets/js/modernizer.js" %}"></script>
+<script src="{% static "assets/js/jquery.prettyPhoto.js" %}"></script>
+<script src="{% static "assets/js/hoverdir.js" %}"></script>
+<script src="{% static "assets/js/animate.js" %}"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $(".delete-book").each(function () {
+            $(this).modalForm({formURL: $(this).data('id')});
+        });
+    });
+</script>
+</body>
+</html>

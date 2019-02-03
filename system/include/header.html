@@ -1,0 +1,44 @@
+{% extends 'adminlte/lib/_main_header.html' %}
+
+{% load adminlte_helpers i18n %}
+<header class="main-header">
+{% block logo %}
+    <a href="{% block logo_href %}/{% endblock %}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">{% block logo_text_small %}<b>System Admin</b>{% endblock %}</span>
+            <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">{% block logo_text %}<b>System Admin</b>{% endblock %}</span>
+    </a>
+{% endblock %}
+
+{% block nav_bar %}
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+        {% block nav_custom_menu %}
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                {% block header_dropdowns %}
+                    {% if request.user.is_authenticated %}
+                         <li>
+                            <a href="#" class="pull-right">
+                                <span class="hidden-xs">Welcome {% firstof request.user.first_name request.user.last_name %} !</span>
+                            </a>
+
+                          </li>
+                            <li><a href="{% url 'logout' %}" class="btn btn-success">Log out</a></li>
+
+                    {% endif %}
+                {% endblock header_dropdowns %}
+            </ul>
+        </div>
+        {% endblock nav_custom_menu %}
+    </nav>
+{% endblock %}
+</header>

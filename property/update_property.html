@@ -1,0 +1,54 @@
+{% load static %}
+{% load bootstrap3 %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+{% include "includes/header.html" %}
+
+<body class="subpageblock">
+
+		<!-- Menu -->
+{% include "includes/menu.html" %}
+		<!-- Three -->
+       <div class="panel panel-default" style="margin-top: 100px">
+           <div class="panel-heading">Update your property</div>
+          <div class="panel-body">
+              <form method="post" action="" enctype="multipart/form-data">
+                           {% csrf_token %}
+
+                            {% if form1.errors and not form1.non_field_errors %}
+                                {% for error in form1.non_field_errors %}
+                                    <p class="alert alert-danger">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if form1.non_field_errors %}
+                                {% for error in form1.non_field_errors %}
+                                    <p class="alert alert-danger">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-lg-8">
+                                {% bootstrap_form form1 %}
+                                {% bootstrap_form form2 %}
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button type="submit" class="submit-btn btn btn-default">Update</button>
+                                </div>
+                            </div>
+
+                        </div>
+              </form>
+          </div>
+        </div>
+
+{% include "includes/footer.html" %}
+
+</body>
+</html>

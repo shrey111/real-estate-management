@@ -1,0 +1,25 @@
+{% load static %}
+<header id="header">
+        <div class="inner">
+            <a href="{% url 'home' %}" class="logo"><img src="{% static "images/logo.png" %}" alt="Logo" /></a>
+            {% if request.user.is_authenticated %}
+                <nav id="nav">
+                    <a href="#">
+                        <span class="hidden-xs">Welcome {% firstof request.user.first_name request.user.last_name %} !</span>
+                    </a>
+                    <a href="{% url 'advertise' %}" class="smoothScroll">Advertise Property</a>
+                    <a href="{% url 'search' %}" class="smoothScroll">Search Property</a>
+                    <a href="{% url 'change_password' %}" class="smoothScroll">Change Password</a>
+                    <a href="{% url 'logout' %}" class="smoothScroll">Log out</a>
+                </nav>
+            {% else %}
+                 <nav id="nav">
+                    <a href="{% url 'home' %}" class="smoothScroll">Home</a>
+                    <a href="{% url 'about' %}" class="smoothScroll">About Us</a>
+                </nav>
+
+            {% endif %}
+
+
+        </div>
+</header>

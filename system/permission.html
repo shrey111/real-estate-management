@@ -1,0 +1,98 @@
+{% extends 'adminlte/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block body %}
+
+    {% block nav_header %}
+                {% include 'system/include/header.html' %}
+    {% endblock %}
+ <section id="page">
+    {% block nav_sidebar %}
+                {% include 'system/include/sidebar.html' %}
+    {% endblock %}
+
+{% block content_wrapper %}
+  <div class="page-container dashboard-page-container">
+          <div class="page-content">
+            <div class="content-wrapper">
+                <!-- Default box -->
+                   <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>Manage System Features</b></h3>
+                      <div class="heading-elements">
+                            <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+                                <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+
+                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Create book button -->
+                            <button class="create-permission btn btn-primary pull-right" type="button" name="button" style="margin-left: 12px">Add New Feature</button>
+                            <a class="btn btn-success pull-right" href="{% url 'upload_features' %}">Upload New Features</a>
+                      </div>
+                    </div>
+
+                   <table class="table table-bordered table-hovered" cellspacing='0'>
+                        <tr>
+                            <th>PermissionType#</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                        {% for feature in featuresList %}
+                            <tr>
+                                <td>{{ feature.permissionTypeID }}</td>
+                                <td>{{ feature.name }}</td>
+                                <td>
+                                    <button type="button" class="update-permission btn btn-sm btn-primary" data-id="{% url 'update_permission' feature.pk %}">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+
+                                    <button type="button" class="delete-permission btn btn-sm btn-danger" data-id="{% url 'delete_permission' feature.pk %}">
+                                            <span class="fa fa-trash"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                  </div>
+
+            </div>
+          </div>
+
+  </div>
+    <!-- /.box -->
+{% endblock content_wrapper %}
+
+    {% block nav_footer %}
+        {% include 'system/include/footer.html' %}
+    {% endblock %}
+ </section>
+
+{% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/jquery.bootstrap.modal.forms.js' %}"></script>
+    <script src="{% static "admin-lte/dist/js/app.min.js" %}"></script>
+    <script type="text/javascript">
+    $(function () {
+    // Sign up button
+        $(".create-permission").modalForm({formURL: "{% url 'create_permission' %}"});
+
+        $(".update-permission").each(function () {
+          $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+         $(".delete-permission").each(function () {
+          $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+    });
+    </script>
+{% endblock %}
+{% endblock body %}

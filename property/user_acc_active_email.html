@@ -1,0 +1,12 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Your account is activated by system admin. Now you can check our system.
+    
+Your credentials:
+Email: {{ user.email }}
+password: {{ temp_password }}
+
+Real Estate System,
+http://{{ domain }}
+{% endautoescape %}
